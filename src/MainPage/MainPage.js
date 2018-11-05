@@ -37,5 +37,16 @@ class MainPage extends Component {
             markers: Object.assign(this.state.markers, marker)
         });
         let venue = this.state.venues.find(venue => venue.id === marker.id)
+        SquareAPI.getVenueDetails(marker.id).then(res => {
+            let fresh = Object.assign(venue, res.response.venue)
+            this.setState({ venues: Object.assign(this.state.venues, fresh)})
+        })
+    }
+
+    sideMenuClick = venue => {
+        let marker = this.state.markers.find(element => element.id === venue.id);
+        this.markersClick(marker)
     }
 }
+
+export default MainPage; 
