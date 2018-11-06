@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Map from './Map.js';
 import './App.css';
-import Header from './Header/Header.js';
-import SideMenu from '.SideMenu/SideMenu.js';
-import Map from '.Map/Map.js';
+import './Styles.css';
+import Header from './Header.js';
+import SideMenu from './SideMenu.js';
+import SquareAPI from './SquareApi.js';
 
-import './MainPage/MainPage.css';
+
 
 class App extends Component {
     state = {
@@ -48,6 +49,34 @@ class App extends Component {
     sideMenuClick = venue => {
         let marker = this.state.markers.find(element => element.id === venue.id);
         this.markersClick(marker)
+    }
+    componentDidMount() {
+        SquareAPI.search({
+            ll: "33.5827606,-101.8777916",
+            query: "restaurant",
+            limit: 10
+        }).then(allVenues => {
+            let { venues } = allVenues.response;
+            let markers = venues.map(venue => {
+                return {
+                    lat: venue.location.lat,
+                    lng: venue.location.lng, 
+                    isOpen: false,
+                    isVisible: true, 
+                    id: venue.id
+                }
+            });
+            this.setState({ venues, markers })
+        });
+    }
+    render() {
+        return (
+        <div className="App">
+            <Header toggle={this.toggle}/>
+            <SideMenu sideMenuOpen={this.state.sideMenuOpen} {...this.state} sideMenuClick={this.sideMenuClick}/>
+            <Map {...this.state} markersClick={this.markersClick}/>
+        </div>
+      );
     }
 }
 
