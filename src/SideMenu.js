@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import RestaurantList from './RestaurantList.js';
+import './Styles.css';
+
 
 class SideMenu extends Component {
     state = {
         query: '',
-        locations: []
+        restaurants: []
     }
 
     venueFilter = () => {
         if(this.state.query.trim() !== "") {
-            let locations = this.props.venues.filter(venue => venue.name.toLowerCase().includes(this.state.query.toLowerCase()))
-            return locations
+            let restaurants = this.props.venues.filter(venue => venue.name.toLowerCase().includes(this.state.query.toLowerCase()))
+            return restaurants
         }
         return this.props.venues
     }
@@ -29,25 +32,32 @@ class SideMenu extends Component {
             }
             return marker;
         });
-        this.props.updateToState({markers})
+        this.props.updateState({markers})
     }
 
     render() {
         return (
             <div className="sideMenu" role="listitem" tabIndex="1">
-            {this.props.menuOpen && 
-                <nav className="navbar" id="navMenu">
-                    <span className="navbar-span" id="navbar-span">
-                    Local Locations
-                    <form>
-                        <input type="search" placeholder="Filter Locations" value={this.state.query} onChange={this.updateQuery}/>
-                    </form>
-                    </span>
-                </nav>
-            }
+            {/*checks toggle open and close*/}
+                {this.props.menuOpen && 
+                    <nav className="navbar navbar-light bg-light" id="sidebar">
+                        <span className="sidebar-span" id="sidebar-span">
+                        Local Grubs
+                        {/*list of filtered restarunts*/}
+                        <form className="form-inline align-items-center col-auto"> 
+                        <input id="search" className="form-control mr-sm-1" type="search" placeholder="Filter Restaurants" value={this.state.query} onChange={this.updateQuery} aria-label="filter"/>
+                        <RestaurantList
+                        {...this.props}
+                        venues={this.venueFilter()}
+                        sideMenuClick={this.props.sideMenuClick}
+                         />
+                        </form>    
+                        </span>
+                    </nav>
+                }
             </div>
         )
     }
 }
 
-export default SideMenu;
+export default SideMenu; 

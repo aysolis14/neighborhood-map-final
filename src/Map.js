@@ -6,7 +6,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "reac
 //Taken from https://tomchentw.github.io/react-google-maps/
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
         <GoogleMap 
-            defaultZoom = { 12 }
+            defaultZoom = {12}
             defaultCenter = {
             {   lat: 33.5809341, lng: -101.884977 }}
             defaultAnimation = {2}
@@ -35,7 +35,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
                     <div>
                         <p>{venueInfo.name}</p>
                         <p>{venueInfo.location.address}</p>
-                        <p id="fourInfo">info provided by <span id="fourTitle">Foursquare</span></p>
+                        <p id="fourInfo">provided by <span id="fourTitle">Foursquare</span></p>
                     </div>
                 </InfoWindow>)}
             </Marker>

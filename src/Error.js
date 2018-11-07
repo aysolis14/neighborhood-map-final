@@ -12,7 +12,7 @@ class Error extends Component {
     }
     render() {
         if (this.setState.hasError) {
-            return <h2>Uh OH!</h2>
+            return <h2>RUh OH!</h2>
         }
         return this.props.children
     }

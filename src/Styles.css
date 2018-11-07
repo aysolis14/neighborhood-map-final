@@ -1,14 +1,55 @@
 body {
     margin: 0;
-    padding: 0; 
+    padding: 0;
     overflow: hidden;
 }
-.App {
-    text-align: center;
+
+/**** Header ****/
+
+#header {
+    color: #5c0000;
+    font-size: 2em;
+    font-style: oblique;
+    display: flex; 
+    width: 100%;
 }
 
-html, body {
-    height: 100%;
+/**** Side Menu ****/
+
+#sidebar {
+    display: flex;
+    flex-flow: column;
+    overflow: scroll;
+    float: left;
+    color:#a11010;
+    max-width: 250px;
     margin: 0;
-    padding: 0;
+    height: 100vh;
+}
+
+#sidebar-span {
+    margin: 0 8px 0 8px;
+    padding: 15px 0 15px 0;
+    color: #a70707;
+}
+
+ul > li {
+    cursor: pointer;
+    border: 2px #393b35 dotted;
+    border-radius: 10px;
+    padding: 10px 0 10px 0;
+}
+
+#search {
+    padding: 5px; 
+}
+
+/**** Map ****/
+#fourInfo {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+#fourTitle {
+    color: #500505;
 }

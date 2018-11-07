@@ -1,14 +1,14 @@
 import React from 'react'
-import Toggle from './Toggle.js'
+import ToggleButton from './Toggle.js'
 
 const Header = (props) => {
     return (
         <div>
-            <nav id="topbar">
+            <nav id="header" className="navbar navbar-expanded-lg navbar-light bg-light">
                 <div className="text-center container-fluid">
-                    Neighborhood Map
+                    Lubbock Neighborhood Map
                     <div className="col-xs-2" tabIndex="0">
-                        <Toggle toggle={props.toggle}/>
+                        <ToggleButton toggle={props.toggle}/>
                     </div>
                 </div>
             </nav>

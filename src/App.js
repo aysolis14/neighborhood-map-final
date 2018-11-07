@@ -10,7 +10,7 @@ import SquareAPI from './SquareApi.js';
 
 class App extends Component {
     state = {
-        sideMenuOpen: true,
+        menuOpen: true,
         venues: [],
         markers: [],
         updateState: element => {
@@ -18,11 +18,10 @@ class App extends Component {
         }
     }
 
-    toggleMenu = () => {
+    toggle = () => {
         this.setState(state => ({
-            sideMenuOpen: !state.sideMenuOpen
-        }
-        ))
+            menuOpen: !state.menuOpen
+        }))
     }
 
     markersClose = () => {
@@ -73,7 +72,7 @@ class App extends Component {
         return (
         <div className="App">
             <Header toggle={this.toggle}/>
-            <SideMenu sideMenuOpen={this.state.sideMenuOpen} {...this.state} sideMenuClick={this.sideMenuClick}/>
+            <SideMenu menuOpen={this.state.menuOpen} {...this.state} sideMenuClick={this.sideMenuClick}/>
             <Map {...this.state} markersClick={this.markersClick}/>
         </div>
       );
