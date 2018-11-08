@@ -37,7 +37,7 @@ class SideMenu extends Component {
 
     render() {
         return (
-            <div className="sideMenu" role="listitem" tabIndex="1">
+            <div className="sideMenu" aria-label="listitem" tabIndex="1">
             {/*checks toggle open and close*/}
                 {this.props.menuOpen && 
                     <nav className="navbar navbar-light bg-light" id="sidebar">
@@ -46,7 +46,7 @@ class SideMenu extends Component {
                         {/*list of filtered restarunts*/}
                         <form className="form-inline align-items-center col-auto"> 
                         <input id="search" className="form-control mr-sm-1" type="search" placeholder="Filter Restaurants" value={this.state.query} onChange={this.updateQuery} aria-label="filter"/>
-                        <RestaurantList tabIndex="3"
+                        <RestaurantList 
                         {...this.props}
                         venues={this.venueFilter()}
                         sideMenuClick={this.props.sideMenuClick}
