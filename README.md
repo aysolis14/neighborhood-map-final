@@ -18,3 +18,4 @@ Below are the steps to download and run this project app:
 * Install project  `npm install`
 * Start the dev server `npm start`
 * Open browser and navigate to `localhost:3000`
+* ***NOTE: Service Worker is registered, but only works in Production mode **

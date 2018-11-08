@@ -26,9 +26,9 @@ class SideMenu extends Component {
             let matchFound = venue.name.toLowerCase().includes(event.target.value.toLowerCase())
             let marker = this.props.markers.find(element => element.id === venue.id);
             if(matchFound) {
-                marker.isVisbile = true;
+                marker.isVisible = true;
             } else {
-                marker.isVisbile = false;
+                marker.isVisible = false;
             }
             return marker;
         });
@@ -41,12 +41,12 @@ class SideMenu extends Component {
             {/*checks toggle open and close*/}
                 {this.props.menuOpen && 
                     <nav className="navbar navbar-light bg-light" id="sidebar">
-                        <span className="sidebar-span" id="sidebar-span">
+                        <span className="sidebar-span" id="sidebar-span" tabIndex="2">
                         Local Grubs
                         {/*list of filtered restarunts*/}
                         <form className="form-inline align-items-center col-auto"> 
                         <input id="search" className="form-control mr-sm-1" type="search" placeholder="Filter Restaurants" value={this.state.query} onChange={this.updateQuery} aria-label="filter"/>
-                        <RestaurantList
+                        <RestaurantList tabIndex="3"
                         {...this.props}
                         venues={this.venueFilter()}
                         sideMenuClick={this.props.sideMenuClick}
